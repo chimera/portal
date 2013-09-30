@@ -1,5 +1,4 @@
-# portal
+# Portal
 
-Congrats! You've just created a Rails applications using [Replicator](https://github.com/teleporter/replicator).
+Ruby on Rails application that controls access to [Chimera Art Space](http://chimeraarts.org).
 
-Now it's time to get to work!
