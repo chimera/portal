@@ -7,14 +7,19 @@
         - @user.errors.full_messages.each do |msg|
           li = msg
   .form-group
-    = f.label :first_name, class: 'form-label'
-    = f.text_field :first_name, class: 'form-control'
-  .form-group
-    = f.label :last_name, class: 'form-label'
-    = f.text_field :last_name, class: 'form-control'
+    .row
+      .col-sm-6
+        = f.label :first_name, class: 'form-label'
+        = f.text_field :first_name, class: 'form-control'
+      .col-sm-6
+        = f.label :last_name, class: 'form-label'
+        = f.text_field :last_name, class: 'form-control'
   .form-group
     = f.label :email, class: 'form-label'
     = f.email_field :email, class: 'form-control'
+  .form-group
+    = f.label :rfid_code, class: 'form-label'
+    = f.text_field :rfid_code, class: 'form-control'
   .form-group
     .row
       .col-sm-6
