@@ -1,0 +1,27 @@
+= form_for [:admin, @user] do |f|
+  - if @user.errors.present?
+    .alert.alert-danger
+      p
+        strong Form contains the following errors:
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li = msg
+  .form-group
+    = f.label :first_name, class: 'form-label'
+    = f.text_field :first_name, class: 'form-control'
+  .form-group
+    = f.label :last_name, class: 'form-label'
+    = f.text_field :last_name, class: 'form-control'
+  .form-group
+    = f.label :email, class: 'form-label'
+    = f.email_field :email, class: 'form-control'
+  .form-group
+    .row
+      .col-sm-6
+        = f.label :password, class: 'form-label'
+        = f.password_field :password, value: (@user.current_password.present? ? @user.current_password : nil), class: 'form-control'
+      .col-sm-6
+        = f.label :password_confirmation, class: 'form-label'
+        = f.password_field :password_confirmation, value: (@user.current_password.present? ? @user.current_password : nil), class: 'form-control'
+  .form-actions
+    = f.submit class: 'btn btn-primary btn-lg'

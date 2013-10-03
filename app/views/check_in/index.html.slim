@@ -1,0 +1,28 @@
+- set_title 'Check In'
+
+h1.page-header Check In
+p Fill in your RFID code or scan your card to check into the space.
+
+
+= form_tag url_for(controller: 'check_in', action: 'create'), class: 'form-inline', role: 'form' do
+  .check-in-form
+    .form-group
+      = text_field_tag 'rfid_code', nil, class: 'form-control input-lg', autofocus: true
+    | &nbsp;&nbsp;
+    .form-group
+      = submit_tag 'Check In', class: 'btn btn-primary btn-lg'
+
+- if current_user && current_user.has_role(:admin) && @check_ins.present?
+  h3 Latest Checkins
+  table.table.table-condensed.table-striped
+    thead
+      tr
+        th User
+        th ID
+        th When
+    tbody
+      - @check_ins.each do |check_in|
+        tr
+          td = check_in.user
+          td = check_in.id
+          td.text-muted #{time_ago_in_words(check_in.created_at)} ago

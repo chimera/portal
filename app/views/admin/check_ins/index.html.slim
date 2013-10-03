@@ -1,0 +1,23 @@
+- set_title 'Check Ins'
+
+ul.nav.nav-pills
+  li = link_to 'Dashboard', admin_path
+  li = link_to 'Users', admin_users_path
+  li.active = link_to 'Check Ins', admin_check_ins_path
+
+h1.page-header Check Ins
+- if @check_ins.present?
+  table.table.table-condensed.table-striped
+    thead
+      tr
+        th User
+        th ID
+        th When
+    tbody
+      - @check_ins.each do |check_in|
+        tr
+          td = check_in.user.full_name
+          td = check_in.id
+          td.text-muted #{time_ago_in_words(check_in.created_at)} ago
+- else
+  .alert.alert-info No check ins yet, get out there and get some members!

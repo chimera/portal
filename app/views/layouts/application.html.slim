@@ -1,23 +1,26 @@
 doctype html
 html
   head
-    title = content_for?(:title) ? yield(:title) : "portal"
-    meta name="viewport" content="width=device-width, initial-scale=1.0"
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    title = content_for?(:title) ? yield(:title) : 'portal'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
     .page
-      nav.page-nav.navbar.navbar-default role="navigation"
+      nav#page-nav.navbar.navbar-default.navbar-static-top role='navigation'
         .container
-          = link_to "portal", '/', class: 'navbar-brand'
+          = link_to 'Portal', '/', class: 'navbar-brand'
           ul.nav.navbar-nav
+            li = link_to 'Check In', check_in_index_path
+            - if user_signed_in? && current_user.has_role(:admin)
+              li = link_to 'Administration', admin_path
           ul.nav.navbar-nav.pull-right
             - if user_signed_in?
-              li = link_to "Logout", logout_path, method: :delete
+              li = link_to 'Logout', logout_path, method: :delete
             - else
-              li = link_to "Sign Up", signup_path
-              li = link_to "Login", login_path
+              li = link_to 'Sign Up', signup_path
+              li = link_to 'Login', login_path
       .container
         = render 'flashes'
         = yield
