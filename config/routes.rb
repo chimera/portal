@@ -6,7 +6,7 @@ Portal::Application.routes.draw do
     get "signup", to: "devise/registrations#new"
   end
 
-  resources :check_in
+  resources :check_ins
 
   namespace "admin" do
     resources :check_ins

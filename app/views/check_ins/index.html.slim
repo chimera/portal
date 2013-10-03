@@ -4,7 +4,7 @@ h1.page-header Check In
 p Fill in your RFID code or scan your card to check into the space.
 
 
-= form_tag url_for(controller: 'check_in', action: 'create'), class: 'form-inline', role: 'form' do
+= form_tag url_for(controller: 'check_ins', action: 'create'), class: 'form-inline', role: 'form' do
   .check-in-form
     .form-group
       = text_field_tag 'rfid_code', nil, class: 'form-control input-lg', autofocus: true

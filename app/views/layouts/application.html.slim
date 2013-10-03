@@ -12,7 +12,7 @@ html
         .container
           = link_to 'Portal', '/', class: 'navbar-brand'
           ul.nav.navbar-nav
-            li = link_to 'Check In', check_in_index_path
+            li = link_to 'Check In', check_ins_path
             - if user_signed_in? && current_user.has_role(:admin)
               li = link_to 'Administration', admin_path
           ul.nav.navbar-nav.pull-right

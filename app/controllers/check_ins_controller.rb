@@ -5,7 +5,7 @@ class CheckInUser
   end
 end
 
-class CheckInController < ApplicationController
+class CheckInsController < ApplicationController
   def index
     @check_ins = CheckIn.order('created_at DESC').limit(10)
   end
@@ -15,10 +15,10 @@ class CheckInController < ApplicationController
 
     if check_in.save
       logger.debug "User checked in with valid RFID code: #{params[:rfid_code]}"
-      redirect_to check_in_index_path, notice: "Welcome #{check_in.user.first_name}, come right on in!"
+      redirect_to check_ins_path, notice: "Welcome #{check_in.user.first_name}, come right on in!"
     else
       logger.warn "Failed Check In with RFID code: #{params[:rfid_code]}"
-      redirect_to check_in_index_path, alert: 'Hey there, you can\'t come in with that kinda attitude!'
+      redirect_to check_ins_path, alert: 'Hey there, you can\'t come in with that kinda attitude!'
     end
   end
 end
