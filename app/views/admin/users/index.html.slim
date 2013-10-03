@@ -1,3 +1,10 @@
+- set_title 'Users'
+
+ul.nav.nav-pills
+  li = link_to 'Dashboard', admin_path
+  li.active = link_to 'Users', admin_users_path
+  li = link_to 'Check Ins', admin_check_ins_path
+
 h1.page-header Users
 - if @users.present?
   table.table.table-striped.table-condensed

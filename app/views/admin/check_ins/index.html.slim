@@ -11,13 +11,11 @@ h1.page-header Check Ins
     thead
       tr
         th User
-        th ID
         th When
     tbody
       - @check_ins.each do |check_in|
         tr
-          td = check_in.user.full_name
-          td = check_in.id
+          td = link_to check_in.user.full_name, admin_user_path(check_in.user)
           td.text-muted #{time_ago_in_words(check_in.created_at)} ago
 - else
   .alert.alert-info No check ins yet, get out there and get some members!
