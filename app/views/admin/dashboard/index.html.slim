@@ -5,8 +5,9 @@ ul.nav.nav-pills
   li = link_to 'Users', admin_users_path
   li = link_to 'Check Ins', admin_check_ins_path
 
-h1.page-header Administration Dashboard
-p = link_to 'New User', new_admin_user_path, class: 'btn btn-primary btn-lg'
+h1.page-header 
+  = link_to 'New User', new_admin_user_path, class: 'btn btn-primary pull-right'
+  | Administration Dashboard
 
 h3 Latest Checkins
 - if @check_ins.present?
