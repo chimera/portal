@@ -16,7 +16,7 @@ class CheckInUser
   end
 
   def self.unlock
-    port = SerialPort.new "/dev/tty.usbmodem621", 9600
+    port = SerialPort.new "/dev/tty.usbmodem411", 9600
     port.write "1\n"
     port.close
   end
